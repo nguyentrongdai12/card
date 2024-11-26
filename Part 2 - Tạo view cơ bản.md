@@ -45,3 +45,4 @@ https://getbootstrap.com/docs/5.0/examples/pricing/
 ```
 php artisan storage:link
 ```
+Hoàn tất trang chủ demo
