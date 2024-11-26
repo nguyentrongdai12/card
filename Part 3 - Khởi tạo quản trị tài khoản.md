@@ -74,7 +74,7 @@ public function panel(Panel $panel): Panel
                     ->checkboxListColumns([
                         'default' => 1,
                         'sm' => 2,
-                        'lg' => 4,
+                        'lg' => 2,
                     ])
                     ->resourceCheckboxListColumns([
                         'default' => 1,
