@@ -55,3 +55,31 @@ php artisan shield:generate --resource=UserResource
         \App\Models\User::class => \App\Policies\UserPolicy::class,
     ];
 ```
+- Điều chỉnh lại chế độ hiển thị của bảng phân quyền: \App\Providers\Filament\AdminPanelProvider.php
+```
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+public function panel(Panel $panel): Panel
+{
+        return $panel
+            ...
+            ...
+            ->plugins([
+                FilamentShieldPlugin::make()
+                    ->gridColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'lg' => 3
+                    ])
+                    ->sectionColumnSpan(1)
+                    ->checkboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'lg' => 4,
+                    ])
+                    ->resourceCheckboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                    ]),
+            ]);
+}
+```
