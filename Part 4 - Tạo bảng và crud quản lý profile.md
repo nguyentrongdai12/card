@@ -59,4 +59,7 @@ Tạo Resource cho Model UserProfile
 php artisan make:filament-resource UserProfile --generate
 ```
 Tại đây chúng ta chỉ quản lý xem thông tin của người dùng, không được phép chỉnh sửa vào hồ sơ của người dùng, vi vậy sẽ khóa các chứ năng thêm xóa sửa đi và chỉ được xem
-Sử dụng Shield để chỉnh sửa lại quyền super_admin không thao tác với dữ liệu này:
+Sử dụng Shield để chỉnh sửa lại quyền super_admin không thao tác với dữ liệu này, sau đó chạy lệnh để tạo quyền cho Resource UserProfileResource
+```
+php artisan shield:generate --resource=UserProfileResource
+```
