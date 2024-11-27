@@ -15,14 +15,14 @@ class UserProfileController extends Controller
 ...
     public function viewprofile()
     {
-        $user_profiles = UserProfile::where('email', 'nguyentrongdai12@gmail.com')->get();
+        $user_profiles = UserProfile::where('email', 'nguyentrongdai12@gmail.com')->first();
         return view('viewprofile', compact(['user_profiles']));
     }
 ...
 }
 ...
 ```
-3. Tạo route
+2. Tạo route
   Mở file ```routes/web.php``` và thêm 1 route
 ```
 <?php
@@ -34,7 +34,7 @@ use App\Http\Controllers\UserProfileController;
 Route::get('/', [CardController::class, 'home'])->name('home');
 Route::get('/profile', [UserProfileController::class, 'viewprofile'])->name('viewprofile');
 ```  
-5. Tạo View
+3. Tạo View
    Tạo 1 file mới tại ```resources/views/viewprofile.blade.php```
    Tại đây chúng ta tạo 1 trang cơ bản như sau:
 ```
@@ -97,4 +97,21 @@ Route::get('/profile', [UserProfileController::class, 'viewprofile'])->name('vie
 </body>
 </html>
 ```  
-7. Hiển thị dữ liệu lên view
+4. Hiển thị dữ liệu lên view
+   Mở file ```resources/views/viewprofile.blade.php```
+   Chỉnh sửa như sau để hiển thị các thông tin:
+```
+...
+<div class="card">
+        <img src="img.jpg" alt="John" style="width:100%">
+        <h1>{{$user_profiles->full_name}}</h1>
+        <p class="title">{{$user_profiles->description}}</p>
+        <p>{{$user_profiles->email}}</p>
+        <a href="#"><i class="fa fa-dribbble"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <p><button>Contact</button></p>
+    </div>
+...
+```   
